@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/widgets/add_bottom_sheet.dart';
 import 'package:notes_app/widgets/note_list_View.dart';
 import 'package:notes_app/widgets/search_icon.dart';
 
@@ -42,47 +43,4 @@ class HomeView extends StatelessWidget {
   }
 }
 
-class AddBottomSheet extends StatelessWidget {
-  const AddBottomSheet({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(24),
-      child: Column(
-        children: [
-          InputText(
-            hint: 'Title',
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          InputText(
-            hint: 'Content',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class InputText extends StatelessWidget {
-  final String hint;
-  const InputText({super.key, required this.hint});
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      
-      decoration: InputDecoration(
-        hintText: hint,
-        hintStyle: const TextStyle(color: Colors.deepPurple, fontSize: 18),
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          ),
-        ),
-      ),
-    );
-  }
-}
