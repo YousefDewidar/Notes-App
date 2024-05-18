@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class NoteCard extends StatelessWidget {
-  const NoteCard({super.key});
+  final Color color;
+  const NoteCard({super.key, required this.color});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: Colors.amberAccent,
+        color: color,
       ),
       child: Padding(
         padding:

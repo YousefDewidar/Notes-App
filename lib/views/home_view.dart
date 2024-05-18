@@ -33,8 +33,8 @@ class HomeView extends StatelessWidget {
           )
         ],
       ),
-      body: const Padding(
-        padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 5),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 5),
         child: Column(children: [
           Expanded(child: NoteListView()),
         ]),
