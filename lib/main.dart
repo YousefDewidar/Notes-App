@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:notes_app/constant.dart';
 import 'package:notes_app/model/note_model.dart';
 import 'package:notes_app/views/home_view.dart';
 
 void main() async {
-  // initial hive 
+  // initial hive
   await Hive.initFlutter();
-  await Hive.openBox<NoteModel>('noteBox');
-
+  await Hive.openBox<NoteModel>(kNotesBox);
+  Hive.registerAdapter(NoteModelAdapter());
   runApp(const NotesApp());
 }
 
@@ -22,8 +23,7 @@ class NotesApp extends StatelessWidget {
         brightness: Brightness.dark,
         fontFamily: 'Poppins',
       ),
-      home:const HomeView(),
+      home: const HomeView(),
     );
   }
 }
-
