@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:notes_app/constant.dart';
 import 'package:notes_app/cubits/notes_cubit.dart';
+import 'package:notes_app/model/note_model.dart';
 import 'package:notes_app/widgets/add_bottom_sheet.dart';
 import 'package:notes_app/widgets/note_list_View.dart';
-import 'package:notes_app/widgets/search_icon.dart';
+import 'package:notes_app/widgets/custom_icon.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -32,15 +35,25 @@ class HomeView extends StatelessWidget {
             'Notes',
             style: TextStyle(fontSize: 24),
           ),
-          actions: const [
+          actions: [
+            CustomIcon(
+              icon: Icons.delete,
+              onPressed: () {
+                Hive.box<NoteModel>(kNotesBox).clear();
+            
+              },
+            ),
             Padding(
-              padding: EdgeInsets.only(right: 16.0),
-              child: SearchIcon(),
+              padding: const EdgeInsets.only(right: 16.0, left: 16),
+              child: CustomIcon(
+                icon: Icons.search,
+                onPressed: () {},
+              ),
             )
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 5),
+        body: const Padding(
+          padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 5),
           child: Column(children: [
             Expanded(child: NoteListView()),
           ]),
