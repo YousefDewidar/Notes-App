@@ -10,10 +10,10 @@ class AddBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      height: 415,
         padding: const EdgeInsets.all(24),
-        child: SingleChildScrollView(
-            child: BlocConsumer<AddNoteCubit, AddNoteState>(
+        child: BlocConsumer<AddNoteCubit, AddNoteState>(
           listener: (context, state) {
             if (state is AddNoteSuccess) {
               Navigator.pop(context);
@@ -27,6 +27,6 @@ class AddBottomSheet extends StatelessWidget {
                 inAsyncCall: state is AddNoteLoading ? true : false,
                 child: const CustomForm());
           },
-        )));
+        ));
   }
 }
