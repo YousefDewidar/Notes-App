@@ -71,6 +71,9 @@ class _CustomFormState extends State<CustomForm> {
               }
             },
           ),
+          const SizedBox(
+            height: 20,
+          ),
         ],
       ),
     );
