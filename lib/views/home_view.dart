@@ -4,7 +4,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/constant.dart';
 import 'package:notes_app/cubits/notes_cubit.dart';
 import 'package:notes_app/model/note_model.dart';
-import 'package:notes_app/widgets/add_bottom_sheet.dart';
+import 'package:notes_app/views/bottom_sheet.dart';
 import 'package:notes_app/widgets/note_list_View.dart';
 import 'package:notes_app/widgets/custom_icon.dart';
 

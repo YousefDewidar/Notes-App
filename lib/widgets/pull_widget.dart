@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/notes_cubit.dart';
@@ -18,9 +17,11 @@ class PullWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // to remove card when drag left
     return Dismissible(
+
       key: UniqueKey(),
       background: Container(
-        color: Colors.red,
+        decoration: BoxDecoration(
+            color: Colors.red, borderRadius: BorderRadius.circular(16)),
         child: const Icon(Icons.delete),
       ),
       direction: DismissDirection.endToStart,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/model/note_model.dart';
+import 'package:notes_app/views/edit_note_view.dart';
 
 class NoteCard extends StatelessWidget {
   final NoteModel note;
@@ -7,14 +8,20 @@ class NoteCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: Colors.blue,
-      ),
-      child: Padding(
-        padding:
-            const EdgeInsets.only(left: 24, top: 24, bottom: 24, right: 24),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context) {
+            return const EditNoteView();
+          },
+        ));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: Colors.blue,
+        ),
+        padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -30,7 +37,7 @@ class NoteCard extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.black.withOpacity(.4), fontSize: 16)),
               ),
-          ),
+            ),
             // date
             Text(
               note.date,

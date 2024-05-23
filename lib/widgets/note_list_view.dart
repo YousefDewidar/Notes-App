@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/notes_cubit.dart';
 import 'package:notes_app/cubits/notes_state.dart';
-import 'package:notes_app/widgets/note_card.dart';
+import 'package:notes_app/views/edit_note_view.dart';
 import 'package:notes_app/widgets/pull_widget.dart';
 
 // ignore: must_be_immutable
 class NoteListView extends StatefulWidget {
   const NoteListView({super.key});
-
   @override
   State<NoteListView> createState() => _NoteListViewState();
 }
