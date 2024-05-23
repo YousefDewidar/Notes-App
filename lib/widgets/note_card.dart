@@ -27,9 +27,9 @@ class NoteCard extends StatelessWidget {
           children: [
             ListTile(
               contentPadding: EdgeInsets.zero,
-              title:  Text(
+              title: Text(
                 note.title,
-                style:const TextStyle(color: Colors.black, fontSize: 24),
+                style: const TextStyle(color: Colors.black, fontSize: 24),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -38,7 +38,9 @@ class NoteCard extends StatelessWidget {
                         color: Colors.black.withOpacity(.4), fontSize: 16)),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  note.delete();
+                },
                 icon: const Icon(
                   Icons.delete_sharp,
                   color: Colors.red,

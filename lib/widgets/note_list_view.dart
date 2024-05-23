@@ -1,11 +1,8 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
-import 'package:notes_app/constant.dart';
 import 'package:notes_app/cubits/notes_cubit.dart';
 import 'package:notes_app/cubits/notes_state.dart';
-import 'package:notes_app/model/note_model.dart';
 import 'package:notes_app/widgets/note_card.dart';
 
 // ignore: must_be_immutable
@@ -17,13 +14,10 @@ class NoteListView extends StatefulWidget {
 }
 
 class _NoteListViewState extends State<NoteListView> {
-
-
   @override
   void initState() {
     BlocProvider.of<NotesCubit>(context).fetchNotes();
     super.initState();
-
   }
 
   @override
@@ -37,8 +31,8 @@ class _NoteListViewState extends State<NoteListView> {
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.only(bottom: 16.0),
             child: NoteCard(
-              note: Hive.box<NoteModel>(kNotesBox).get(index)!,
-          ),
+              note:notes[index],
+            ),
           ),
         );
       },
