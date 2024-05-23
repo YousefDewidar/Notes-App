@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/notes_cubit.dart';
 import 'package:notes_app/cubits/notes_state.dart';
 import 'package:notes_app/widgets/note_card.dart';
+import 'package:notes_app/widgets/pull_widget.dart';
 
 // ignore: must_be_immutable
 class NoteListView extends StatefulWidget {
@@ -26,12 +27,13 @@ class _NoteListViewState extends State<NoteListView> {
       builder: (context, state) {
         var notes = BlocProvider.of<NotesCubit>(context).notes;
         return ListView.builder(
-          padding: EdgeInsets.zero,
           itemCount: notes.length,
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.only(bottom: 16.0),
-            child: NoteCard(
-              note:notes[index],
+            // card with motion
+            child: PullWidget(
+              notes: notes,
+              index: index,
             ),
           ),
         );
