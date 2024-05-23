@@ -9,21 +9,24 @@ class AddBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 415,
-      padding: const EdgeInsets.all(24),
-      child: BlocConsumer<AddNoteCubit, AddNoteState>(
-        listener: (context, state) {
-          if (state is AddNoteSuccess) {
-            Navigator.pop(context);
-          }
-          if (state is AddNoteFailuer) {
-            print('failed ${state.errorMsg}');
-          }
-        },
-        builder: (context, state) {
-          return const CustomForm();
-        },
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: Container(
+        height: 415,
+        padding: const EdgeInsets.all(24),
+        child: BlocConsumer<AddNoteCubit, AddNoteState>(
+          listener: (context, state) {
+            if (state is AddNoteSuccess) {
+              Navigator.pop(context);
+            }
+            if (state is AddNoteFailuer) {
+              print('failed ${state.errorMsg}');
+            }
+          },
+          builder: (context, state) {
+            return const CustomForm();
+          },
+        ),
       ),
     );
   }
