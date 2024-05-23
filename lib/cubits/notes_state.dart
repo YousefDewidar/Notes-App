@@ -10,8 +10,3 @@ class NotesSuccess extends NotesState {
   NotesSuccess({required this.noteList});
 }
 
-class NotesFailuer extends NotesState {
-  final String errorMsg;
-
-  NotesFailuer(this.errorMsg);
-}
