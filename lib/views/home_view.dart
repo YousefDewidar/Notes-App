@@ -13,51 +13,51 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NotesCubit(),
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showModalBottomSheet(
-              isScrollControlled: true,
-              context: context,
-              builder: (context) =>
-                  const SingleChildScrollView(child: AddBottomSheet()),
-            );
-          },
-          child: const Icon(
-            Icons.add,
-            size: 27,
-          ),
+    return Scaffold(
+      // button add to add note
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: (context) =>
+                const SingleChildScrollView(child: AddBottomSheet()),
+          );
+        },
+        child: const Icon(
+          Icons.add,
+          size: 27,
         ),
-        appBar: AppBar(
-          title: const Text(
-            'Notes',
-            style: TextStyle(fontSize: 24),
+      ),
+      appBar: AppBar(
+        title: const Text(
+          'Notes',
+          style: TextStyle(fontSize: 24),
+        ),
+        actions: [
+          // icon delete
+          CustomIcon(
+            icon: Icons.delete,
+            onPressed: () async {
+              await Hive.box<NoteModel>(kNotesBox).clear();
+              BlocProvider.of<NotesCubit>(context).fetchNotes();
+            },
           ),
-          actions: [
-            CustomIcon(
-              icon: Icons.delete,
-              onPressed: () {
-                Hive.box<NoteModel>(kNotesBox).clear();
-            
-              },
+          // icon search
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0, left: 16),
+            child: CustomIcon(
+              icon: Icons.search,
+              onPressed: () {},
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 16.0, left: 16),
-              child: CustomIcon(
-                icon: Icons.search,
-                onPressed: () {},
-              ),
-            )
-          ],
-        ),
-        body: const Padding(
-          padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 5),
-          child: Column(children: [
-            Expanded(child: NoteListView()),
-          ]),
-        ),
+          )
+        ],
+      ),
+      body: const Padding(
+        padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 5),
+        child: Column(children: [
+          Expanded(child: NoteListView()),
+        ]),
       ),
     );
   }

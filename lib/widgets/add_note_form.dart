@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/add_note_cubit.dart';
+import 'package:notes_app/cubits/notes_cubit.dart';
 import 'package:notes_app/model/note_model.dart';
 import 'package:notes_app/widgets/custom_button.dart';
 import 'package:notes_app/widgets/custom_input_text.dart';
@@ -59,6 +60,9 @@ class _CustomFormState extends State<CustomForm> {
                     subTitle: subTitle!,
                     title: title!);
                 BlocProvider.of<AddNoteCubit>(context).addNote(note);
+                BlocProvider.of<NotesCubit>(context).fetchNotes();
+
+              
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});
