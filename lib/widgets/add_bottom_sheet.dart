@@ -9,43 +9,24 @@ class AddBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     return BlocProvider(
-      create: (context) => AddNoteCubit(),
-      child: Container(
-        height: 415,
-        padding: const EdgeInsets.all(24),
-        child: BlocConsumer<AddNoteCubit, AddNoteState>(
-          listener: (context, state) {
-            if (state is AddNoteSuccess) {
-              Navigator.pop(context);
-            }
-            if (state is AddNoteFailuer) {
-              print('failed ${state.errorMsg}');
-            }
-          },
-          builder: (context, state) {
-            return const CustomForm();
-          },
-        ),
-=======
-    return Container(
-      height: 415,
-      padding: const EdgeInsets.all(24),
-      child: BlocConsumer<AddNoteCubit, AddNoteState>(
-        listener: (context, state) {
-          if (state is AddNoteSuccess) {
-            Navigator.pop(context);
-          }
-          if (state is AddNoteFailuer) {
-            print('failed ${state.errorMsg}');
-          }
-        },
-        builder: (context, state) {
-          return const CustomForm();
-        },
->>>>>>> 6219ad8fcb1f104ea790c8177d4c0975ad5e3bd5
-      ),
-    );
+        create: (context) => AddNoteCubit(),
+        child: Container(
+          height: 415,
+          padding: const EdgeInsets.all(24),
+          child: BlocConsumer<AddNoteCubit, AddNoteState>(
+            listener: (context, state) {
+              if (state is AddNoteSuccess) {
+                Navigator.pop(context);
+              }
+              if (state is AddNoteFailuer) {
+                print('failed ${state.errorMsg}');
+              }
+            },
+            builder: (context, state) {
+              return const CustomForm();
+            },
+          ),
+        ));
   }
 }
