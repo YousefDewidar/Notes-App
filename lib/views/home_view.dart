@@ -12,8 +12,9 @@ class HomeView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
+            isScrollControlled: true,
             context: context,
-            builder: (context) => const AddBottomSheet(),
+            builder: (context) =>const SingleChildScrollView(child: AddBottomSheet()),
           );
         },
         child: const Icon(
@@ -42,5 +43,3 @@ class HomeView extends StatelessWidget {
     );
   }
 }
-
-
