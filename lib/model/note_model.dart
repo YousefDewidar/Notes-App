@@ -1,5 +1,5 @@
-import 'package:hive_flutter/adapters.dart';
 
+import 'package:hive/hive.dart';
 
 //command --> flutter packages pub run build_runner build
 //Generate Type Adapter

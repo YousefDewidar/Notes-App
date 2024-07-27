@@ -40,6 +40,7 @@ class HomeView extends StatelessWidget {
             icon: Icons.delete,
             onPressed: () async {
               await Hive.box<NoteModel>(kNotesBox).clear();
+              // ignore: use_build_context_synchronously
               BlocProvider.of<NotesCubit>(context).fetchNotes();
             },
           ),
